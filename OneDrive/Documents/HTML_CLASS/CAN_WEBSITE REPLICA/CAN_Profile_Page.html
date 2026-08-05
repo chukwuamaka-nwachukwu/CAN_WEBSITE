@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All About Me</title>
+
+  <style>
+    @font-face {
+      font-family: 'Waltograph';
+      src: url('./Disney.ttf') format('truetype');
+    }
+
+    
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0d0221, #35013f, #7b1fa2);
+
+
+
+;
+      position: relative;
+      font-family: 'Poppins', sans-serif;
+    }
+
+
+
+    .Profile-card {
+      width: 400px;
+      height: 800px;
+      background-color: whitesmoke;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 5;
+    }
+
+    .Profile-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 35px rgba(255, 0, 255, 0.6);
+    }
+
+    .Header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 240px;
+      background: linear-gradient(135deg, #2b215f, #3e368c);
+    }
+
+    .Header img {
+      border: 6px solid white;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff00cc, #3333ff, #00ffcc);
+      padding: 5px;
+      box-shadow: 0 0 15px #ff00cc, 0 0 30px #3333ff;
+      margin-top: 10px;
+    }
+
+    .remaining-card {
+      padding: 30px;
+      text-align: left;
+    }
+
+    .remaining-card h4 {
+      font-family: 'Waltograph', cursive;
+      font-size: 32px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ff00cc, #3333ff, #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 30px;
+      letter-spacing: 3px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .remaining-card b {
+      font-family: Comic Sansve MS,cursive, sans-serif;
+      display: block;
+      font-size: 16px;
+      color: #333;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      line-height:30px
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .social-links a img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 50%;
+    }
+
+    .social-links a img:hover {
+      transform: scale(1.3);
+      box-shadow: 0 0 20px #00ffcc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="Profile-card">
+    <div class="Header">
+      <img src="./WhatsApp Image 2025-10-23 at 22.40.29_0a74c8e4.jpg" alt="Myself😉">
+    </div>
+
+    <div class="remaining-card">
+      <h4>ALL ABOUT ME</h4>
+      <b style="background: linear-gradient(135deg, #ff00cc, #3333ff, #00ffcc);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">---> Highschool Graduate</b>
+      <b style="background: linear-gradient(135deg, #ff00cc, #3333ff, #00ffcc);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">---> Backend and Frontend Developer</b>
+      <b style="background: linear-gradient(135deg, #ff00cc, #3333ff, #00ffcc);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">---> Acquired 1290 in SATs</b>
+      <b style="background: linear-gradient(135deg, #ff00cc, #3333ff, #00ffcc);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">---> An Aspiring Robotics Engineer</b>
+      <b style="margin-bottom:40px;background: linear-gradient(135deg, #ff00cc, #3333ff, #00ffcc);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">---> An Aspiring Cartoonist</b>
+
+      <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?viewas=100000686899395&id=61552779822697" target="_blank">
+          <img src="../WEEK_2 and 3/Facebook.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/uzui_can/" target="_blank">
+          <img src="../WEEK_2 and 3/Instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.linkedin.com/in/chukwuamaka-nwachukwu-188137320/" target="_blank">
+          <img src="../WEEK_2 and 3/Linkedin.png" alt="LinkedIn">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  

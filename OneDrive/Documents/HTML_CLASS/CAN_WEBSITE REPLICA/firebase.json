@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "CAN_WEBSITE REPLICA",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",

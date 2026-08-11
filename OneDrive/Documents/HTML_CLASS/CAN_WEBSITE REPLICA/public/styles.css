@@ -26,7 +26,7 @@ body {
 }
 
 .header-wrapper {
-    width: 100%;
+    width: 90%;
     height: 100%;
     display: flex;
     justify-content: space-between; 
@@ -84,25 +84,26 @@ body {
     align-items: center;
     justify-content: center;
 }
-
+.hero-content{
+    margin-left: 30px;
+}
 
 .container {
     position: relative;
     z-index: 10;
-    width: 95%; 
+    width: 90%; 
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .hero-content {
-    flex: 0.5;
     color: white;
 }
 
 #skills-carousel {
     position: relative;
-    margin-right: 120px;
+    margin-right: 100px;
     width: 340px;
     height: 340px;
 
@@ -264,15 +265,18 @@ body {
 .about-section {
     position: relative;
     overflow: hidden;
-
+    
     background: #7b8fb7;
 
     padding: 120px 90px;
 
-    min-height: 100vh;
+     min-height: 100vh;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .about-glow {
@@ -308,21 +312,23 @@ body {
     position: relative;
     z-index: 5;
     width: 100%;
-    height:100vh;
+    height:75vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 100px;
+    gap: 270px;
+    margin-top: 200px;
 }
 
 .about-image {
     position: relative;
     margin-top: -250px;
+    margin-left: 0px;
 }
 
 .about-image img {
-    width: 450px;
-    height: 600px;
+    width: 390px;
+    height: 580px;
     object-fit: cover;
     border-radius: 28px;
     transition: 0.5s ease;
@@ -337,7 +343,7 @@ body {
 }
 
 .about-text {
-    max-width: 650px;
+    max-width: 500px;
     margin-top: -200px;
 }
 
@@ -368,6 +374,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
     margin-bottom: 20px;
+    
 }
 
 .about-card {
@@ -381,6 +388,7 @@ body {
     align-items: center;
     gap: 14px;
     transition: 0.4s ease;
+    
 }
 
 .about-card i {
@@ -456,6 +464,7 @@ body {
 .cv-btn {
     background: #1b3a57;
     color: white;
+    margin-top: 7px;
 }
 
 .cv-btn:hover {
@@ -495,18 +504,27 @@ body {
 .projects-section {
             padding: 100px 0;
             background:  #364a67;
+             min-height: 100vh;
+            padding-top: 135px;
+            padding-bottom: 4rem;
         }
         .projects-main-wrapper {
             width: 90%;
             max-width: 1300px;
             margin: 0 auto;
-            text-align: center;
+            text-align: left;
+            
         }
         .section-title {
-            font-size: 40px;
+            font-size: 48px;
             color: white;
             margin-bottom: 40px;
             font-family: 'Trebuchet MS', sans-serif;
+            margin-bottom: 20px;
+            border-left: 6px solid rgba(29,191,115,0.4); 
+            padding-left: 25px;
+            margin-left: 75px;
+            height:70px;
         }
 
         /* Centering Logic */
@@ -514,7 +532,7 @@ body {
             display: flex;
             flex-wrap: wrap;
             justify-content: center; /* This ensures items center if row isn't full */
-            gap: 60px;
+            gap: 50px;
         }
 
         .project-item {
@@ -527,6 +545,7 @@ body {
             cursor: pointer;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(29,191,115,0.4)
         }
 
         .project-item:hover {
@@ -563,17 +582,20 @@ body {
         .filter-controls {
             margin-bottom: 50px;
             display: flex;
-            justify-content: center;
+            justify-content: left;
+            margin-left: 75px;
             gap: 15px;
         }
         .control {
             padding: 10px 24px;
-            border: 2px solid #ddd;
+            border: none;
             background: white;
             border-radius: 30px;
             cursor: pointer;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 400;
             transition: 0.3s;
+
         }
         .control.active, .control:hover {
             background: #356ea3;
@@ -608,6 +630,7 @@ body {
             max-height: 70vh;
             border-radius: 10px;
             box-shadow: 0 0 40px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 25px rgba(29,191,115,0.4)
         }
         .close-lightbox {
             position: absolute;
@@ -641,14 +664,16 @@ body {
         }
 
         .skills-container {
-            width: 86%; 
+            width: 76%; 
             max-width: 1240px; 
         }
 
         .skills-header {
             margin-bottom: 50px;
-            border-left: 4px solid #1dbf73;
+            border-left: 6px solid rgba(29,191,115,0.4);
             padding-left: 20px;
+            
+            
         }
 
         h2 {
@@ -657,6 +682,7 @@ body {
             color: #ffffff;
             margin: 0;
             letter-spacing: -1.5px;
+            
         }
 
         .header-subtitle {
@@ -669,7 +695,7 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 280px; /* All boxes same height */
-    gap: 25px;
+    gap: 50px;
 }
 
 .bento-item {
@@ -684,6 +710,7 @@ body {
     align-items: center;     /* centers content horizontally */
     text-align: center;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 10px 25px rgba(29,191,115,0.4);
 }
 
 .bento-item:hover {
@@ -751,14 +778,14 @@ body {
 }
 
 .contact-container {
-    width: 86%;
+    width: 76%;
     max-width: 1190px;
     padding-left: 0px;
 }
 
 .contact-header {
     margin-bottom: 20px;
-    border-left: 6px solid #96bcdf; 
+    border-left: 6px solid rgba(29,191,115,0.4); 
     padding-left: 25px;
 }
 
@@ -901,7 +928,10 @@ body {
   gap: 25px;
   align-items: center;
 }
-
+.speech-bubble{
+    text-align: center;
+    margin-left: 0px;
+}
 .hero-content h1 {
   font-size: 26px;
   color: white;
@@ -937,9 +967,6 @@ body {
   border-radius: 8px;
   font-size: 14px;
 }
-.speech-bubble{
-    margin-left: -180px;
-}
 .btn.primary {
   background: white;
   color: #1b3a57;
@@ -954,6 +981,7 @@ body {
 .about-section {
   padding: 140px 20px;
   background: #7b8fb7;
+  padding-top: 230px;
 }
 /* By default, hide all project items */
 .project-item {
@@ -1016,78 +1044,63 @@ body {
   gap: 15px;
 }
 
-/* PROJECTS */
+/* PROJECTS SECTION */
 .projects-section {
-  padding: 70px 20px;
+  padding: 120px 0px;
   background: #364a67;
-}
-
-.projects-main-wrapper {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
   text-align: center;
 }
 
+/* Title and Filters */
 .section-title {
-  font-size: 28px;
+  font-size: 26px;
   color: white;
-  margin-bottom: 25px;
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: left;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
 }
 
 .filter-controls {
-  margin-bottom: 30px;
   display: flex;
   justify-content: center;
-  gap: 10px;
   flex-wrap: wrap;
-}
-
-.control {
-  padding: 8px 18px;
-  border: 2px solid #ddd;
-  background: white;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.control.active,
-.control:hover {
-  background: #356ea3;
-  color: white;
-  border-color: #1b3a57;
+  gap: 12px;
+  margin-bottom: 30px;
+  margin-left: 15px;
 }
 
 /* PROJECT GRID */
 .projects-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
 }
 
 /* PROJECT CARD */
 .project-item {
-  border-radius: 12px;
+  width: 90%;
+  max-width: 320px;
+  border-radius: 16px;
   overflow: hidden;
-  background: #000;
-  position: relative;
-  cursor: pointer;
+  background: #1b3a57;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-item:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.35);
 }
 
+/* Image/Video Wrapper */
 .project-wrapper {
   width: 100%;
-  aspect-ratio: 16 / 9; /* ensures consistent video size */
-  position: relative;
+  aspect-ratio: 16 / 9;
 }
 
 .project-wrapper img,
@@ -1097,20 +1110,17 @@ body {
   object-fit: cover;
 }
 
-/* INFO OVERLAY */
+/* Info Overlay */
 .project-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 12px;
-  color: white;
+  padding: 15px;
   background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
+  text-align: left;
 }
 
 .project-info h3 {
   font-size: 16px;
-  margin-bottom: 4px;
+  font-weight: 600;
 }
 
 .project-info p {
@@ -1164,7 +1174,7 @@ body {
   justify-content: center;
   gap: 15px;
   margin-top: 20px;
-  margin-left: 80px;
+  margin-left: 50px;
 }
 
 .social-icons a {

@@ -729,6 +729,10 @@ margin-right:40px;
     gap: 12px;
     width: 100%;
   }
+  .project-item {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
 
   .about-card {
     font-size: 14px;

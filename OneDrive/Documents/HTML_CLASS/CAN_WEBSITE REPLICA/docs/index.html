@@ -460,18 +460,36 @@ document.querySelector('.scroll-btn.right').onclick = () => {
   grid.scrollBy({ left: grid.clientWidth * 0.9, behavior: 'smooth' });
 };
 let currentIndex = 0;
+let visibleItems = Array.from(document.querySelectorAll('.project-item'))
+  .filter(item => item.style.display !== 'none');
 
 function updateProjects() {
-  items.forEach((item, index) => {
+  visibleItems.forEach((item, index) => {
     item.style.display = index === currentIndex ? 'block' : 'none';
   });
   document.querySelector('.scroll-btn.left').disabled = currentIndex === 0;
-  document.querySelector('.scroll-btn.right').disabled = currentIndex === items.length - 1;
+  document.querySelector('.scroll-btn.right').disabled = currentIndex === visibleItems.length - 1;
 }
 
-// Initial state
-updateProjects();
+// Filter controls
+controls.forEach(btn => {
+  btn.addEventListener('click', () => {
+    controls.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.getAttribute('data-filter');
 
+    items.forEach(item => {
+      item.style.display = (filter === 'all' || item.classList.contains(filter)) ? 'block' : 'none';
+    });
+
+    // Refresh visible items after filtering
+    visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
+    currentIndex = 0;
+    updateProjects();
+  });
+});
+
+// Arrow navigation
 document.querySelector('.scroll-btn.left').onclick = () => {
   if (currentIndex > 0) {
     currentIndex--;
@@ -479,10 +497,11 @@ document.querySelector('.scroll-btn.left').onclick = () => {
   }
 };
 document.querySelector('.scroll-btn.right').onclick = () => {
-  if (currentIndex < items.length - 1) {
+  if (currentIndex < visibleItems.length - 1) {
     currentIndex++;
     updateProjects();
   }
 };
+
 
 </script>

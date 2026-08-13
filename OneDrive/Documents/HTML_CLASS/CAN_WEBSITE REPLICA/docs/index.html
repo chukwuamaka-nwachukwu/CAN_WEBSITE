@@ -324,54 +324,25 @@ items.forEach(item => {
 
     titleEl.textContent = title;
     descEl.textContent = desc;
-
-    lightbox.style.display = 'flex'; // show lightbox
+    lightbox.style.display = 'flex';
   });
 });
-
 
 closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
 lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.style.display = 'none'; });
 
-
+// Roles for typing effect + carousel
 const roles = [
-  {
-    text: "Full Stack Developer",
-    images: [
-      "https://img.icons8.com/color/144/javascript.png",
-      "https://img.icons8.com/color/144/java-coffee-cup-logo.png",
-      "https://img.icons8.com/color/144/mysql-logo.png",
-      "https://img.icons8.com/color/144/mongodb.png",
-      "https://img.icons8.com/color/144/c-sharp-logo.png",
-      "https://img.icons8.com/color/144/html-5--v1.png",
-      "https://img.icons8.com/color/144/css3.png",
-      "./images/python_logo.png"
-    ]
-  },
-  {
-    text: "Cartoonist",
-    images: [
-      "./images/African_Queen.jpg",
-      "./images/Cold_Wolf.jpg",
-      "./images/Tropical_Theme.jpg",
-      "./images/The_Art_of_Tradition.jpg",
-      "./images/The_Joy_of_a_Child.jpg"
-    ]
-  }
+  { text: "Full Stack Developer", images: [ "https://img.icons8.com/color/144/javascript.png", "https://img.icons8.com/color/144/java-coffee-cup-logo.png", "https://img.icons8.com/color/144/mysql-logo.png", "https://img.icons8.com/color/144/mongodb.png", "https://img.icons8.com/color/144/c-sharp-logo.png", "https://img.icons8.com/color/144/html-5--v1.png", "https://img.icons8.com/color/144/css3.png", "./images/python_logo.png" ] },
+  { text: "Cartoonist", images: [ "./images/African_Queen.jpg", "./images/Cold_Wolf.jpg", "./images/Tropical_Theme.jpg", "./images/The_Art_of_Tradition.jpg", "./images/The_Joy_of_a_Child.jpg" ] }
 ];
 
-let roleIndex = 0;
-let charIndex = 0;
-let deleting = false;
-let carouselIndex = 0;
-let carouselImages = [];
-let carouselInterval;
+let roleIndex = 0, charIndex = 0, deleting = false;
+let carouselIndex = 0, carouselImages = [], carouselInterval;
 
-// Setup carousel
 function setupCarousel(images) {
   carousel.innerHTML = "";
   carouselImages = [];
-
   images.forEach((src, index) => {
     const img = document.createElement("img");
     img.src = src;
@@ -379,10 +350,8 @@ function setupCarousel(images) {
     carousel.appendChild(img);
     carouselImages.push(img);
   });
-
   carouselIndex = 0;
   clearInterval(carouselInterval);
-
   carouselInterval = setInterval(() => {
     carouselImages[carouselIndex].classList.remove("active");
     carouselIndex = (carouselIndex + 1) % carouselImages.length;
@@ -390,10 +359,8 @@ function setupCarousel(images) {
   }, 1800);
 }
 
-// Typing effect
 function typeEffect() {
   const currentRole = roles[roleIndex].text;
-
   if(!deleting) {
     textElement.textContent = currentRole.substring(0, charIndex + 1);
     charIndex++;
@@ -401,47 +368,20 @@ function typeEffect() {
     textElement.textContent = currentRole.substring(0, charIndex - 1);
     charIndex--;
   }
-
   let speed = deleting ? 60 : 120;
-
   if(!deleting && charIndex === currentRole.length) {
-    deleting = true;
-    speed = 2200;
-    setupCarousel(roles[roleIndex].images);
+    deleting = true; speed = 2200; setupCarousel(roles[roleIndex].images);
+  } else if(deleting && charIndex === 0) {
+    deleting = false; roleIndex = (roleIndex + 1) % roles.length; speed = 700;
   }
-  else if(deleting && charIndex === 0) {
-    deleting = false;
-    roleIndex = (roleIndex + 1) % roles.length;
-    speed = 700;
-  }
-
   setTimeout(typeEffect, speed);
 }
 
-// Start typing + carousel
 document.addEventListener("DOMContentLoaded", () => {
   setupCarousel(roles[0].images);
   typeEffect();
-
-  // Show all projects by default
   items.forEach(item => item.style.display = 'block');
-});
-
-// Filter controls
-controls.forEach(btn => {
-  btn.addEventListener('click', () => {
-    controls.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.getAttribute('data-filter');
-
-    items.forEach(item => {
-      if (filter === 'all' || item.classList.contains(filter)) {
-        item.style.display = 'block';   // show matching items
-      } else {
-        item.style.display = 'none';    // hide non-matching items
-      }
-    });
-  });
+  updateProjects();
 });
 
 // Hover play video
@@ -452,24 +392,33 @@ items.forEach(item => {
     item.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
   }
 });
-const grid = document.querySelector('.projects-grid');
-document.querySelector('.scroll-btn.left').onclick = () => {
-  grid.scrollBy({ left: -grid.clientWidth * 0.9, behavior: 'smooth' });
-};
-document.querySelector('.scroll-btn.right').onclick = () => {
-  grid.scrollBy({ left: grid.clientWidth * 0.9, behavior: 'smooth' });
-};
+
 let currentIndex = 0;
-let visibleItems = Array.from(document.querySelectorAll('.project-item'))
-  .filter(item => item.style.display !== 'none');
+let visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
 
 function updateProjects() {
-  visibleItems.forEach((item, index) => {
-    item.style.display = index === currentIndex ? 'block' : 'none';
-  });
-  document.querySelector('.scroll-btn.left').disabled = currentIndex === 0;
-  document.querySelector('.scroll-btn.right').disabled = currentIndex === visibleItems.length - 1;
+  const leftBtn = document.querySelector('.scroll-btn.left');
+  const rightBtn = document.querySelector('.scroll-btn.right');
+  const grid = document.querySelector('.projects-grid');
+
+  if (window.innerWidth <= 768) {
+    // Mobile: horizontal scroll strip
+    visibleItems.forEach(item => item.style.display = 'block');
+
+    const maxScroll = grid.scrollWidth - grid.clientWidth;
+    leftBtn.disabled = (grid.scrollLeft <= 0);
+    rightBtn.disabled = (grid.scrollLeft >= maxScroll || visibleItems.length <= 1);
+
+  } else {
+    // Tablet + Desktop: show all items in grid
+    visibleItems.forEach(item => item.style.display = 'block');
+
+    // Disable arrows if only one item, otherwise both enabled
+    leftBtn.disabled = true; // always disabled at start
+    rightBtn.disabled = (visibleItems.length <= 1);
+  }
 }
+
 
 // Filter controls
 controls.forEach(btn => {
@@ -482,41 +431,45 @@ controls.forEach(btn => {
       item.style.display = (filter === 'all' || item.classList.contains(filter)) ? 'block' : 'none';
     });
 
-    // Refresh visible items after filtering
     visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
     currentIndex = 0;
-    updateProjects();
+    grid.scrollLeft = 0; // reset scroll on mobile
+
+    updateProjects(); // arrows reset correctly
   });
 });
 
 // Arrow navigation
-document.querySelector('.scroll-btn.left').onclick = () => {
-  if (currentIndex > 0) {
+document.querySelector('.scroll-btn.left').addEventListener('click', () => {
+  const grid = document.querySelector('.projects-grid');
+  if (window.innerWidth <= 768) {
+    grid.scrollBy({ left: -grid.clientWidth * 0.9, behavior: 'smooth' });
+    setTimeout(updateProjects, 500);
+  } else if (currentIndex > 0) {
     currentIndex--;
     updateProjects();
   }
-};
-document.querySelector('.scroll-btn.right').onclick = () => {
-  if (currentIndex < visibleItems.length - 1) {
+});
+
+document.querySelector('.scroll-btn.right').addEventListener('click', () => {
+  const grid = document.querySelector('.projects-grid');
+  if (window.innerWidth <= 768) {
+    grid.scrollBy({ left: grid.clientWidth * 0.9, behavior: 'smooth' });
+    setTimeout(updateProjects, 500);
+  } else if (currentIndex < visibleItems.length - 1) {
     currentIndex++;
     updateProjects();
   }
-};
+});
 
-controls.forEach(btn => {
-  btn.addEventListener('click', () => {
-    controls.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.getAttribute('data-filter');
+// Keep arrows updated on resize
+window.addEventListener('resize', updateProjects);
 
-    items.forEach(item => {
-      if (filter === 'all' || item.classList.contains(filter)) {
-        item.style.display = 'block';   // show
-      } else {
-        item.style.display = 'none';    // hide
-      }
-    });
-  });
+// Initialize on load
+document.addEventListener("DOMContentLoaded", () => {
+  updateProjects();
 });
 
 </script>
+
+

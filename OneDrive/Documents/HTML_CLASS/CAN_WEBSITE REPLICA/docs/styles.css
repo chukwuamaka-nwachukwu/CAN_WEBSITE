@@ -629,8 +629,17 @@ body {
   .site-header {
     height: 55px;
     padding: 0 0px;
+    width: 100vw;              /* force full viewport width */
+    left: 0;
+    right: 0;
+    overflow: hidden;  
   }
 
+.header-container {
+  width: 100%;
+  padding: 0 15px;            /* consistent spacing */
+  box-sizing: border-box;
+}
   .logo img {
     height: 30px;
     filter: drop-shadow(0 4px 10px rgba(56,189,248,0.5));
@@ -835,14 +844,16 @@ margin-right:40px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: background 0.3s ease, transform 0.3s ease;
   z-index: 10;
-  display: block !important;
 }
-.scroll-btn:disabled {
-  background: rgba(255,255,255,0.2);
-  cursor: not-allowed;
+
+.scroll-btn.left {
+  left: 10px;
 }
-.scroll-btn.left { left: 10px; top:530px; }
-.scroll-btn.right { right: 10px;top:530px; }
+
+.scroll-btn.right {
+  right: 10px;
+}
+
 
 .lightbox-content {
     width: 95%;
@@ -954,4 +965,29 @@ margin-right:40px;
     margin-top: 20px;
     align-self: flex-start;
   }
+  .lightbox-content {
+    width: 100%;
+    max-width: none;
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+/* Media inside lightbox */
+#lightbox-media-container img,
+#lightbox-media-container video {
+  width: 100%;   /* smaller size relative to container */
+  max-height: 100vh; /* keep it smaller vertically */
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(81,161,236,0.5);
+  margin: 20px auto;
+  transition: transform 0.3s ease;
+}
+#lightbox-media-container img:hover,
+#lightbox-media-container video:hover {
+  transform: scale(1.05);
+}
+.scroll-btn{
+    display:none !important;
+}
+
 }

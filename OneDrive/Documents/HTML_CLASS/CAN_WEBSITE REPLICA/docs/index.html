@@ -503,5 +503,20 @@ document.querySelector('.scroll-btn.right').onclick = () => {
   }
 };
 
+controls.forEach(btn => {
+  btn.addEventListener('click', () => {
+    controls.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.getAttribute('data-filter');
+
+    items.forEach(item => {
+      if (filter === 'all' || item.classList.contains(filter)) {
+        item.style.display = 'block';   // show
+      } else {
+        item.style.display = 'none';    // hide
+      }
+    });
+  });
+});
 
 </script>

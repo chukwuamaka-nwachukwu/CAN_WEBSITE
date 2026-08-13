@@ -628,11 +628,11 @@ body {
   /* HERO */
   .site-header {
     height: 55px;
-    padding: 0 15px;
+    padding: 0 0px;
   }
 
   .logo img {
-    height: 32px;
+    height: 30px;
     filter: drop-shadow(0 4px 10px rgba(56,189,248,0.5));
   }
 
@@ -650,7 +650,7 @@ body {
   .hero-section {
     padding: 120px 20px;
     text-align: center;
-    height: auto;
+    height: 100vh;
   }
 
   .hero-container {
@@ -779,7 +779,7 @@ margin-right:40px;
   display: grid;
   grid-auto-flow: column;        /* force horizontal strip */
   grid-auto-columns: 80%;        /* each card takes ~85% of viewport */
-  gap: 35px;
+  gap: 50px;
   overflow-x: hidden;            /* hide native scrollbars */
   scroll-snap-type: x mandatory; /* snap cards neatly */
   -webkit-overflow-scrolling: touch;
@@ -896,5 +896,62 @@ margin-right:40px;
   .social-icons {
     flex-wrap: wrap;
     gap: 20px;
+  }
+}
+/* Tablet view (768px–1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;   /* center items in the row */
+  }
+
+  .project-item {
+    width: 300px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 6px 15px rgba(56,189,248,0.3);
+  }
+
+  .projects-section{
+    min-height:100vh;
+  }
+
+  .project-item:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(56,189,248,0.4);
+  }
+
+  .scroll-btn {
+    display: none; /* hide arrows on tablet grid view */
+  }
+   .hero-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-content{
+    margin-left: 130px;
+  }
+  .speech-bubble{
+    margin-left: 160px;
+  }
+  .typing-text{
+    margin-left: 100px;
+  }
+  .cta-buttons{
+    margin-left:40px;
+  }
+  .hero-content p {
+    margin-left:0px;
+    text-align: center;
+  }
+  .hero-content h1{
+    margin-left:0px;
+  }
+  #skills-carousel {
+    margin-top: 20px;
+    align-self: flex-start;
   }
 }

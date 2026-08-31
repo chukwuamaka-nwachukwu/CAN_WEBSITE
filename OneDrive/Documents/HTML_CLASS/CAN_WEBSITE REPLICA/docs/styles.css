@@ -784,25 +784,24 @@ margin-right:40px;
 .filter-controls .control {
   margin: 10px 0px; /* more breathing room */
 }
-.projects-grid {
-  display: grid;
-  grid-auto-flow: column;        /* force horizontal strip */
-  grid-auto-columns: 80%;        /* each card takes ~85% of viewport */
-  gap: 50px;
-  overflow-x: hidden;            /* hide native scrollbars */
-  scroll-snap-type: x mandatory; /* snap cards neatly */
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  justify-content: start;
-}
-.project-item {
-  scroll-snap-align: start;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.05);
-  box-shadow: 0 6px 15px rgba(56,189,248,0.3);
-  width:300px;
-  margin-left: 25px;
-}
+ .projects-grid {
+    display: flex;
+     flex-wrap: nowrap !important;   /* force single row */
+    overflow-x: auto !important;    /* enable horizontal scroll */
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;  /* snap cards neatly */
+    gap: 20px;
+    padding: 10px;
+    justify-content: start;
+  }
+
+  .project-item {
+    flex: 0 0 80%;                  /* each card ~80% of viewport */
+    scroll-snap-align: start;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 6px 15px rgba(56,189,248,0.3);
+  }
 
 
   .project-item:hover {
@@ -995,4 +994,22 @@ margin-right:40px;
     display:none !important;
 }
 
+}
+@media (max-width: 768px) {
+  .projects-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 10px;
+    justify-content: flex-start !important;
+  }
+
+  .project-item {
+    flex: 0 0 85% !important;   /* each card ~85% of viewport */
+    scroll-snap-align: center;
+    margin: 0 auto;
+  }
 }

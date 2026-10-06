@@ -1,0 +1,216 @@
+/* ============================================================
+   Nex-IV Design System — global styles & design tokens
+   Brand: #fff8e7 (cream) / #cfe1e2 (light teal) / #341f1a (dark brown)
+   ============================================================ */
+
+:root {
+  /* Brand colors */
+  --color-cream: #fff8e7;
+  --color-teal-light: #cfe1e2;
+  --color-brown-dark: #341f1a;
+
+  /* Backgrounds */
+  --color-background: #fff8e7;
+  --color-surface: #ffffff;
+  --color-surface-alt: #cfe1e2;
+  --color-surface-warm: #fbf3e0;
+
+  /* Text */
+  --color-text-primary: #341f1a;
+  --color-text-secondary: #6f625d;
+  --color-text-muted: #8c817b;
+  --color-text-inverse: #fff8e7;
+  --color-text-on-teal: #341f1a;
+
+  /* Brand actions */
+  --color-primary: #341f1a;
+  --color-primary-hover: #241512;
+  --color-secondary: #cfe1e2;
+  --color-secondary-hover: #bcd3d4;
+
+  /* Borders */
+  --color-border: #e2d8c8;
+  --color-border-strong: #341f1a;
+
+  /* Status */
+  --color-success: #3f7d5a;
+  --color-success-bg: #e5f2ea;
+  --color-warning: #b8860b;
+  --color-warning-bg: #fbf3dd;
+  --color-danger: #a94442;
+  --color-danger-bg: #f9e8e7;
+  --color-info: #527b82;
+  --color-info-bg: #e7f0f1;
+
+  /* Chart palette (brand-derived + accessible supports) */
+  --chart-1: #341f1a;
+  --chart-2: #cfe1e2;
+  --chart-3: #8b9f6c;
+  --chart-4: #c9976a;
+  --chart-5: #6f7fa8;
+  --chart-6: #a8443c;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(52, 31, 26, 0.08);
+  --shadow-md: 0 8px 24px rgba(52, 31, 26, 0.12);
+  --shadow-lg: 0 16px 40px rgba(52, 31, 26, 0.18);
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Typography */
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', Menlo, monospace;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 22px;
+  --text-3xl: 28px;
+  --text-4xl: 36px;
+
+  /* Layout */
+  --sidebar-width: 256px;
+  --sidebar-collapsed: 72px;
+  --topbar-height: 60px;
+  --z-dropdown: 900;
+  --z-drawer: 1000;
+  --z-modal: 1100;
+  --z-toast: 1200;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-2);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+
+p { margin: 0 0 var(--space-4); }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+button {
+  font-family: var(--font-sans);
+}
+
+img { max-width: 100%; }
+
+/* ---------- Base utility classes ---------- */
+.muted { color: var(--color-text-muted); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-danger { color: var(--color-danger); }
+.text-info { color: var(--color-info); }
+.text-mono { font-family: var(--font-mono); }
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-1 { flex: 1; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.wrap { flex-wrap: wrap; }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-4 { margin-bottom: var(--space-4); }
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-md { font-size: var(--text-md); }
+.p-4 { padding: var(--space-4); }
+.h1 { font-size: var(--text-2xl); font-weight: 700; }
+.h2 { font-size: var(--text-xl); font-weight: 700; }
+.h3 { font-size: var(--text-lg); font-weight: 600; }
+
+/* ---------- Scrollbars ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4c9b8;
+  border-radius: 8px;
+  border: 2px solid var(--color-background);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b8ab98;
+}
+
+/* ---------- Focus ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
